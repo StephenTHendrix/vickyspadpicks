@@ -2,7 +2,6 @@ import { getApartments } from './api/getApartments'
 import { styled } from 'restyle'
 import Image from 'next/image'
 
-// Define your color constants (adjust these values to your preference)
 const brandRed = '#FF0000'
 const brandLightBlue = '#00AEEF'
 const brandWhite = '#FFFFFF'
