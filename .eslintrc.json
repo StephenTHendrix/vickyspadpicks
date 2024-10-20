@@ -1,3 +1,35 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "tabWidth": 2,
+        "printWidth": 120,
+        "singleQuote": true,
+        "semi": false,
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "jsxSingleQuote": true,
+        "endOfLine": "auto"
+      }
+    ],
+    "prefer-const": "error",
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "import/no-unresolved": "error",
+    "react/no-unescaped-entities": "off"
+  }
 }
