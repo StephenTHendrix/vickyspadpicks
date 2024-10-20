@@ -93,6 +93,7 @@ const ApartmentTitle = styled('h3', {
   fontSize: '20px',
   fontWeight: 'bold',
   marginBottom: '10px',
+  color: 'black',
 })
 
 const Price = styled('p', {
@@ -104,14 +105,17 @@ const Price = styled('p', {
 const Details = styled('p', {
   fontSize: '16px',
   marginBottom: '5px',
+  color: 'black',
 })
 
 const MoveInDate = styled('p', {
   fontSize: '14px',
   marginBottom: '10px',
+  color: 'black',
 })
 
 const Amenities = styled('p', {
   fontSize: '14px',
   color: '#666',
+  color: 'black',
 })
