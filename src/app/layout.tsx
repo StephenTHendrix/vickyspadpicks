@@ -14,8 +14,8 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Vicky's Apartments",
-  description: 'Personalized State Thomas Apartments',
+  title: "Vicky's Pad Picks",
+  description: 'Personalized State Thomas Apartments for Vicky',
 }
 
 export default function RootLayout({
