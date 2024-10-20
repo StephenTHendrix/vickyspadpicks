@@ -116,6 +116,5 @@ const MoveInDate = styled('p', {
 
 const Amenities = styled('p', {
   fontSize: '14px',
-  color: '#666',
   color: 'black',
 })
