@@ -26,7 +26,7 @@ async function fetchUnitData(url, complexName) {
       const thumbnailUrl = $(element).find('.apt-image img').attr('src') // Extract thumbnail URL
 
       // Filter for studios or 1-bed apartments and price under $1800
-      if (priceNumber < 1600 && (bedBath.includes('Studio') || bedBath.includes('1 Bed'))) {
+      if (priceNumber < 1800 && (bedBath.includes('Studio') || bedBath.includes('1 Bed'))) {
         // Create an apartment object and push it to the array if it meets the criteria
         apartments.push({
           unit: unitNumber,
