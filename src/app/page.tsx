@@ -34,6 +34,7 @@ export default async function Home() {
                 <Details>
                   {apartment.bedBath}, {apartment.squareFeet}
                 </Details>
+                <MoveInDate>{apartment.floor}</MoveInDate>
                 <MoveInDate>Move-in: {apartment.moveInDate}</MoveInDate>
                 <Amenities>Amenities: {apartment.amenities}</Amenities>
               </ApartmentDetails>
@@ -104,6 +105,12 @@ const Price = styled('p', {
 const Details = styled('p', {
   fontSize: '16px',
   marginBottom: '5px',
+  color: 'black',
+})
+
+const Floor = styled('p', {
+  fontSize: '14px',
+  marginBottom: '10px',
   color: 'black',
 })
 

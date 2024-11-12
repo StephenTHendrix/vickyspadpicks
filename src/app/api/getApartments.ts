@@ -21,7 +21,8 @@ async function fetchUnitData(url, complexName) {
       const details = $(element).find('.apt-details li')
       const bedBath = $(details[0]).text().trim()
       const squareFeet = $(details[1]).text().trim()
-      const moveInDate = $(details[2]).text().replace('Move-in:', '').trim()
+      const floor = $(details[2]).text().trim()
+      const moveInDate = $(details[3]).text().replace('Move-in:', '').trim()
       const amenities = $(element).find('.apt-amenities').text().trim()
       const thumbnailUrl = $(element).find('.apt-image img').attr('src') // Extract thumbnail URL
 
@@ -33,6 +34,7 @@ async function fetchUnitData(url, complexName) {
           price: price,
           bedBath: bedBath,
           squareFeet: squareFeet,
+          floor: floor,
           moveInDate: moveInDate,
           amenities: amenities,
           thumbnailUrl: thumbnailUrl,
