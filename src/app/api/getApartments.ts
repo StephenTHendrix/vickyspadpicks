@@ -13,6 +13,10 @@ async function fetchUnitData(url, complexName) {
     // Array to hold apartment data for this complex
     const apartments = []
 
+    // Define start and end of the valid date range
+    const validStartDate = new Date('2024-11-13')
+    const validEndDate = new Date('2024-12-15')
+
     // Parse the available apartment details
     $('.available-apartments__body--apt').each((index, element) => {
       const unitNumber = $(element).find('.unit').text().trim()
@@ -22,23 +26,53 @@ async function fetchUnitData(url, complexName) {
       const bedBath = $(details[0]).text().trim()
       const squareFeet = $(details[1]).text().trim()
       const floor = $(details[2]).text().trim()
-      const moveInDate = $(details[3]).text().replace('Move-in:', '').trim()
+      const moveInDateText = $(details[3]).text().replace('Move-in:', '').trim()
       const amenities = $(element).find('.apt-amenities').text().trim()
       const thumbnailUrl = $(element).find('.apt-image img').attr('src') // Extract thumbnail URL
 
-      // Filter for studios or 1-bed apartments and price under $1800
-      if (priceNumber < 1800 && (bedBath.includes('Studio') || bedBath.includes('1 Bed'))) {
-        // Create an apartment object and push it to the array if it meets the criteria
+      // Initialize validDate as false
+      let validDate = false
+
+      if (moveInDateText.includes('-')) {
+        // Handle range format, e.g., "11/20 - 12/10"
+        const [startDateStr, endDateStr] = moveInDateText.split('-').map(date => date.trim())
+
+        // Parse start date only
+        const startDate = new Date(`2024-${startDateStr.replace('/', '-')}`)
+
+        // Debugging output for the parsed start date
+        // console.log(`Unit ${unitNumber} - Move-in Range: ${moveInDateText}`)
+        // console.log(
+        //   `Parsed Start Date: ${startDate}, Valid Start Date: ${validStartDate}, Valid End Date: ${validEndDate}`
+        // )
+
+        // Ensure start date is within the valid range
+        validDate = startDate >= validStartDate && startDate <= validEndDate
+        // console.log(`Is Valid Start Date (within range): ${validDate}`)
+      } else {
+        // Handle single date format
+        const singleDate = new Date(`2024-${moveInDateText.replace('/', '-')}`)
+        validDate = singleDate >= validStartDate && singleDate <= validEndDate
+
+        // Debugging output for single date
+        // console.log(
+        //   `Unit ${unitNumber} - Move-in Single Date: ${singleDate}, Valid Start Date: ${validStartDate}, Valid End Date: ${validEndDate}`
+        // )
+        // console.log(`Is Valid Single Date (within range): ${validDate}`)
+      }
+
+      // Filter for apartments under $1800, studio or 1 bed, and valid move-in date
+      if (priceNumber < 1800 && (bedBath.includes('Studio') || bedBath.includes('1 Bed')) && validDate) {
         apartments.push({
           unit: unitNumber,
           price: price,
           bedBath: bedBath,
           squareFeet: squareFeet,
           floor: floor,
-          moveInDate: moveInDate,
+          moveInDate: moveInDateText,
           amenities: amenities,
           thumbnailUrl: thumbnailUrl,
-          apartmentComplex: complexName, // Include the apartment complex name
+          apartmentComplex: complexName,
         })
       }
     })
