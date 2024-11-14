@@ -88,7 +88,7 @@ async function fetchUnitData(url, complexName) {
 // Function to fetch data from all 3 apartment complexes in parallel
 async function fetchAllUnitData() {
   const urls = [
-    { url: 'https://www.maac.com/texas/dallas/maa-worthington/', complex: 'MAA Worthington' },
+    // { url: 'https://www.maac.com/texas/dallas/maa-worthington/', complex: 'MAA Worthington' },
     { url: 'https://www.maac.com/texas/dallas/maa-heights/', complex: 'MAA Heights' },
     { url: 'https://www.maac.com/texas/dallas/maa-uptown-village/', complex: 'MAA Uptown Village' },
   ]
